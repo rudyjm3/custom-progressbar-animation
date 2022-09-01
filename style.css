@@ -1,0 +1,218 @@
+@import "https://unpkg.com/open-props";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap');
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  --offwhite: 140 3.2% 93.9%;
+  --cream: 150 5.1% 84.7%;
+  --olive: 111 5.7% 52.2%;
+  --dark: 212 11.6% 25.3%;
+  --shadow-color: hsl(var(--olive));
+  --num: 49;
+}
+
+body {
+   display: grid;
+   place-items: center;
+   gap: var(--size-fluid-4);
+   background-color: hsl(var(--offwhite));
+   font-size: var(--font-size-3);
+ }
+ 
+ .textblock-container {
+   display: grid;
+   gap: var(--size-4);
+   max-width: var(--size-content-3);
+   padding-inline: var(--size-4);
+   margin-inline: auto;
+ }
+ 
+ h1 {
+   font-weight: bold;
+   font-size: var(--font-size-fluid-3);
+   width: 100%;
+   text-align: center;
+   padding: var(--size-fluid-5);
+   background-color: hsl(var(--cream));
+ }
+ 
+ h2 {
+   font-weight: bold;
+   font-size: var(--font-size-fluid-2);
+ }
+
+ aside {
+   display: grid;
+   place-items: center;
+   gap: var(--size-fluid-1);
+   padding: var(--size-fluid-3) var(--size-fluid-3) var(--size-fluid-5);
+   background-color: hsl(var(--cream));
+   width: 100%;
+   color: hsl(var(--dark));
+   text-align: center;
+   --shadow-color: hsl(var(--olive));
+   box-shadow: var(--shadow-2);
+ }
+
+ .progress-wrapper {
+   display: grid;
+   gap: var(--size-4);
+   width: 100%;
+   max-width: 300px;
+   position: relative;
+ }
+
+ .progress-label {
+   color: hsl(var(--olive));
+   margin-block-end: var(--size-4);
+   font-size: var(--font-size-0);
+ }
+
+ .progress-label::after {
+   counter-reset: num var(--num);
+   content: counter(num) "%";
+   position: absolute;
+   left: 0;
+   --size-2: .75rem;
+   top: var(--size-2);
+   font-weight: bold;
+   transform: translateX(-50%);
+ }
+
+ .progress-label::after {
+   animation: progress-text 2s cubic-bezier(0.94, 0.01, 0.31, 0.97) forwards;
+ }
+
+ .progress-container {
+   position: relative;
+   background-color: hsl(var(--offwhite));
+   height: var(--size-8);
+   border-radius: var(--radius-round);
+   overflow: hidden;
+   z-index: 20;
+   box-shadow: var(--shadow-2);
+ }
+
+ .progress-container::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   width: 0%;
+   height: 100%;
+   background-color: hsl(var(--olive));
+   height: var(--size-8);
+   border-radius: var(--radius-round);
+   z-index: 20;
+ }
+
+ .progress-container::before {
+   animation: progress-width 2s cubic-bezier(0.94, 0.01, 0.31, 0.97) forwards;
+ }
+
+ progress {
+   opacity: 0;
+ }
+
+ .progress-overlay {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   position: absolute;
+   /* overflow: hidden; */
+   top: 50%;
+   left: 1rem;
+   right: 1rem;
+   transform: translateY(-50%);
+   z-index: 20;
+   font-weight: bold;
+ }
+
+ .text-raised {
+   color: hsl(var(--offwhite));
+ }
+
+ .bubble {
+   position: absolute;
+   background-color: hsl(var(--offwhite));
+   color: var(--olive);
+   font-size: var(--font-size-0);
+   border-radius: var(--radius-round);
+   --size-3: .75rem;
+   padding: var(--size-1) var(--size-3);
+   box-shadow: var(--shadow-5);
+ }
+
+ .bubble::before {
+   content:"";
+   border-right: 4px solid transparent;
+   border-left: 4px solid transparent;
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+ }
+
+ .bubble--top {
+   left: var(--size-4);
+   top: var(--size-2);
+ }
+
+ .bubble--top::before {
+   border-top: 4px solid hsl(var(--offwhite));
+   bottom: -4px;
+ }
+
+ .bubble--bottom {
+   right: var(--size-4);
+   bottom: calc(var(--size-6) * -1.1);
+ }
+
+ .bubble--bottom::before {
+   border-bottom: 4px solid hsl(var(--offwhite));
+   top: -4px;
+ }
+
+ @property --num {
+   syntax: "<integer>";
+   initial-value: 0;
+   inherits: false;
+ }
+
+ @keyframes progress-text {
+   from {
+      left: 0%;
+   }
+   to {
+      left: 49%;
+      --num: 49;
+   }
+ }
+
+ @keyframes progress-width {
+   to {
+      width: 49%;
+   }
+ }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- Stylesheet Links -->
+   <link rel="stylesheet" href="style.css">
+   <!-- JS Links -->
+   <script src="app.js" defer></script>
+
+   <title>Fundrasier Animation</title>
+</head>
+<body>
+
+   <h1>🧙‍ Scroll for the Magic 🧙‍</h1>
+   <div class="textblock-container">
+      ...
+   </div>
+   <!-- The Progress Bar -->
+   <aside>
+      <h2>Target Fundraising Goal: $250,000</h2>
+      <div class="progress-wrapper">
+         <p class="progress-label" aria-hidden="true"></p>
+         <p class="bubble bubble--top" aria-hidden="true">
+            Funds raised
+         </p>
+         <div class="progress-container">
+            <progress id="raised" max="250000" value="123125" aria-label="$123,125 raised, $126,875 left to raise"></progress>
+            <div class="progress-overlay">
+               <p class="text-raised" aria-hidden="true">$123,125</p>
+               <p class="text-remaining" aria-hidden="true">$126,875</p>
+            </div>
+         </div>
+         <p class="bubble bubble--bottom" aria-hidden="true">
+            Yet to raise
+         </p>
+      </div>
+   </aside>
+   
+</body>
+</html>
