@@ -8,9 +8,15 @@ const fadeObserver = new IntersectionObserver(
             }, +el.target.getAttribute('data-delay') || 0);
             //stop observering elements after the function has ran for the 1st time
             fadeObserver.unobserve(el.target);
+            //Listen for transition ended and remove fade classes
+            el.target.addEventListener('transitionend', () => {
+               el.target.classList.remove('fade-up', 'fade-left', 'fade-right','fade-down', 'faded')
+            },
+               {once: true}
+            )
          }
       })
-   }
+   }, {threshold: 0.2}
 )
 
 const fadeEls = [
