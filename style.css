@@ -103,7 +103,7 @@ body {
    transform: translateX(-50%);
  }
 
- .progress-label::after {
+ .progress-label[data-animate="animate"]::after {
    animation: progress-text 2s cubic-bezier(0.94, 0.01, 0.31, 0.97) forwards;
  }
 
@@ -129,7 +129,7 @@ body {
    z-index: 20;
  }
 
- .progress-container::before {
+ .progress-container[data-animate="animate"]::before {
    animation: progress-width 2s cubic-bezier(0.94, 0.01, 0.31, 0.97) forwards;
  }
 

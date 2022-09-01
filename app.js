@@ -29,3 +29,28 @@ const fadeEls = [
 fadeEls.forEach((el) => {
    fadeObserver.observe(el);
 })
+
+
+function animateCallback(els) {
+   els.forEach((el) => {
+      if (el.isIntersecting) {
+         setTimeout(() => {
+            el.target.setAttribute('data-animate', 'animate');
+         }, +el.target.getAttribute('data-delay') || 0);
+         //stop observering elements after the function has ran for the 1st time
+         animateObserver.unobserve(el.target);
+      }
+   })
+}
+
+const animateOptions = {
+   threshold: 0.25
+}
+
+const animateObserver = new IntersectionObserver(animateCallback, animateOptions)
+
+const animateEls = [...document.querySelectorAll('[data-animate]')];
+
+animateEls.forEach((el) => {
+   animateObserver.observe(el);
+})
