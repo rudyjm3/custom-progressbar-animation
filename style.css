@@ -216,3 +216,32 @@ body {
       width: 49%;
    }
  }
+
+.fade-up,
+.fade-down,
+.fade-right,
+.fade-left {
+   opacity: 0;
+   transition: transform 1s cubic-bezier(0.64, 0.04, 0.26, 0.87), opacity 0.8s cubic-bezier(0.64, 0.04, 0.26, 0.87);
+}
+
+.fade-up {
+   transform: translate3D(0, 3rem, 0);
+}
+.fade-down {
+   transform: translate3D(0, -3rem, 0);
+}
+.fade-left {
+   transform: translate3D(3rem, 0, 0);
+}
+.fade-right {
+   transform: translate3D(-3rem, 0, 0);
+}
+
+.fade-up.faded,
+.fade-down.faded,
+.fade-right.faded,
+.fade-left.faded {
+   opacity: 1;
+   transform: translate3D(0, 0, 0);
+}
